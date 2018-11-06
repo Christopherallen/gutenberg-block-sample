@@ -2,20 +2,19 @@
 /**
  * Plugin Name: Gutenberg Block Sample
  * Version: 1.0.0
- * Description: Outputs Fresh Logo
- * Author: Fresh Consulting
+ * Description: creates a static gutenberg block
+ * Author: Chris Allen
  * Author URI: https://freshconsulting.com
- * Text Domain: fresh-template-view
- * @package fresh-template-view
+ * Text Domain: gutenberg-block-sample
+ * @package gutenberg-block-sample
  */
 
 if( ! defined( 'ABSPATH' ) ) {
 	return;
 }
 
-
 /**
- * Enqueue the block's assets for the editor.
+ * Enqueue the block's assets.
  *
  * wp-blocks:  The registerBlockType() function to register blocks.
  * wp-element: The wp.element.createElement() function to create elements.

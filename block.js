@@ -1,9 +1,9 @@
 ( function() {
-  const __ = wp.i18n.__;
+	const __ = wp.i18n.__;
 	const createElement = wp.element.createElement;
-  const registerBlockType = wp.blocks.registerBlockType;
+	const registerBlockType = wp.blocks.registerBlockType;
 
-  /**
+	/**
 	 * Register block
 	 *
 	 * @param  {string}   name     Block name.

@@ -23,8 +23,8 @@ if( ! defined( 'ABSPATH' ) ) {
 function fresh_block_enqueue() {
 	wp_enqueue_script(
 		'fresh_block_enqueue',
-		plugins_url( 'block.js', __FILE__ ),
-		array( 'wp-blocks', 'wp-i18n', 'wp-element' )
+		plugins_url( 'block.build.js', __FILE__ ),
+		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-editor' )
 	);
 }
 

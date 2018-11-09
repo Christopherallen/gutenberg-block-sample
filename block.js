@@ -1,7 +1,7 @@
 ( function() {
-	const __ = wp.i18n.__;
-	const createElement = wp.element.createElement;
-	const registerBlockType = wp.blocks.registerBlockType;
+	const { __ } = wp.i18n;
+	const { registerBlockType } = wp.blocks;
+	const { RichText } = wp.editor;
 
 	/**
 	 * Register block
@@ -17,27 +17,36 @@
 			title: __( 'Fresh Static Block' ),
 			icon: 'lock',
 			category: 'common',
+			attributes: {
+				textString: {
+					type: 'array',
+					source: 'children',
+					selector: 'h2',
+				}
+			},
 
 			// Defines the block within the editor.
-			edit: function( props ) {
-				return createElement(
-					'div',
-					{
-						className: props.className,
-					},
-					'Fresh Consulting Static Gutenberg Block.'
+			edit: ( props ) => {
+				const { attributes: { 	textString }, className, setAttributes } = props;
+				const onChangeContent = ( newContent ) => {
+					setAttributes( { textString: newContent } );
+				};
+
+				return (
+					<div className={ className }>
+						<RichText
+							tagName="h2"
+							value={ textString }
+							onChange={ onChangeContent  }
+							placeholder="Enter your text here!"
+							/>
+					</div>
 				);
 			},
 
 			// Defines the saved block.
-			save: function( props ) {
-				return createElement(
-					'div',
-					{
-						className: props.className,
-					},
-					'Fresh Consulting Static Gutenberg Block.'
-				);
+			save: ( props ) => {
+				return <RichText.Content tagName="h2" value={ props.attributes.textString } />;
 			},
 		}
 	);
